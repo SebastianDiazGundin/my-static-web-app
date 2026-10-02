@@ -7,9 +7,18 @@ configuración existente; no la mezcles con la de otra app.
 
 ## Ponytail: la solución más simple que funcione
 
-Adoptado de [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) (MIT).
-Nivel por defecto: **full**. Se puede cambiar con `/ponytail lite|full|ultra` (requiere el plugin,
-ver `.claude/settings.json`).
+Adoptado de [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) v4.10.0 (MIT).
+El plugin está declarado en `.claude/settings.json`; Claude Code ofrece instalarlo al abrir el repo.
+Manual: `/plugin marketplace add DietrichGebert/ponytail` y luego `/plugin install ponytail@ponytail`
+(requiere `node` en el PATH). Sin el plugin, estas reglas siguen valiendo igual.
+
+| Nivel | Cómo | Qué hace |
+|---|---|---|
+| lite | `/ponytail lite` | Construye lo pedido y nombra en una línea la alternativa más simple. |
+| **full** | `/ponytail` | La escalera aplicada. **Default del repo.** |
+| ultra | `/ponytail ultra` | YAGNI extremo: borrar antes que agregar, cuestiona el requisito. |
+
+Desactivar: "stop ponytail" o "normal mode". El nivel dura hasta cambiarlo o cerrar la sesión.
 
 ### La escalera
 
@@ -73,3 +82,6 @@ Primero el código. Después, como máximo tres líneas cortas: qué se omitió 
 - `/ponytail-review`: revisa el diff y busca solo sobreingeniería (tags `delete:` `stdlib:` `native:`
   `yagni:` `shrink:`). No cubre bugs ni seguridad; para eso usa `/code-review` y `/security-review`.
 - `/ponytail-audit`: auditoría de todo el repo con lo que se puede borrar o simplificar. Solo reporta.
+- `/ponytail-debt`: lista los comentarios `ponytail:` como registro de deuda técnica y marca con
+  `no-trigger` los que no dicen cuándo mejorarlos. Úsalo antes de cada release.
+- `/ponytail-help`: tarjeta de referencia de niveles y comandos.
