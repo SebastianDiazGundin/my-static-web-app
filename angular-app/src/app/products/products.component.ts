@@ -37,6 +37,7 @@ const data: Product[] = [
       </div>
     </div>
   `,
+  standalone: false,
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];

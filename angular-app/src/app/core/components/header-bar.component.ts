@@ -13,5 +13,6 @@ import { Component } from '@angular/core';
       </nav>
     </header>
   `,
+  standalone: false,
 })
 export class HeaderBarComponent {}

@@ -1,1 +1,0 @@
-{"ast":null,"code":"export * from './product';","map":{"version":3,"names":[],"sources":["/home/user/my-static-web-app/angular-app/src/app/core/model/index.ts"],"sourcesContent":["export * from './product';\n"],"mappings":"AAAA,cAAc,WAAW","ignoreList":[]},"metadata":{},"sourceType":"module","externalDependencies":[]}
