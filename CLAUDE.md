@@ -5,6 +5,12 @@ Cada app vive en su carpeta (`*-app/`) con su propio `package.json`, linter y `.
 Antes de tocar una app, usa sus scripts (`npm run lint`, `npm run format`, `npm test`) y su
 configuración existente; no la mezcles con la de otra app.
 
+- Stack: React 17 (CRA), Vue 3 (Vue CLI), Svelte 4 (Rollup), Angular 20. Node 20+ en todas.
+- Estado: estado local del componente. Sin Redux/Vuex/NgRx hasta que haya estado compartido real.
+- Íconos: Font Awesome 5 por CDN en el `index.html` de cada app; no instales paquetes de íconos.
+- Deploy: el workflow de Azure despliega solo `react-app` (un recurso SWA = una app). Otra app
+  necesita su propio recurso y token.
+
 ## Ponytail: la solución más simple que funcione
 
 Adoptado de [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) v4.10.0 (MIT).
