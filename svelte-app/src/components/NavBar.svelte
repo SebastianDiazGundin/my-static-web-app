@@ -1,11 +1,7 @@
 <script>
-  import { Router, Link, Route } from 'svelte-routing';
-  import { getContext } from 'svelte';
-  import { ROUTER } from 'svelte-routing/src/contexts';
+  import { Link } from 'svelte-routing';
 
-  const { activeRoute } = getContext(ROUTER);
-
-  function getProps({ location, href, isPartiallyCurrent, isCurrent }) {
+  function getProps({ href, isPartiallyCurrent, isCurrent }) {
     const isActive = href === '/' ? isCurrent : isPartiallyCurrent || isCurrent;
 
     // The object returned here is spread on the anchor element's attributes
