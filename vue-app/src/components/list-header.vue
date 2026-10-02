@@ -11,6 +11,7 @@ export default {
       default: () => '',
     },
   },
+  emits: ['refresh'],
   methods: {
     handleRefresh() {
       this.$emit('refresh');

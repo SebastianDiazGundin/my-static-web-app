@@ -1,8 +1,6 @@
 <script>
 import CardContent from '@/components/card-content.vue';
 
-const captains = console;
-
 export default {
   name: 'ProductList',
   props: {
@@ -12,12 +10,6 @@ export default {
     },
   },
   components: { CardContent },
-  methods: {
-    selectProduct(product) {
-      captains.log(`You tried to select ${product.name}`);
-      this.$emit('selected', product);
-    },
-  },
 };
 </script>
 

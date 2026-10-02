@@ -15,5 +15,6 @@ import { Component } from '@angular/core';
       </ul>
     </nav>
   `,
+  standalone: false,
 })
 export class NavComponent {}

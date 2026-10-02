@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-export class Customer {
-  public id: number;
-  public name: string;
-}
+
 @Component({
   selector: 'app-root',
   styleUrls: ['./app.component.scss'],
@@ -17,8 +14,6 @@ export class Customer {
       </div>
     </div>
   `,
-
+  standalone: false,
 })
-export class AppComponent {
-  customers: Customer[] = [{ id: 1, name: 'john' }];
-}
+export class AppComponent {}

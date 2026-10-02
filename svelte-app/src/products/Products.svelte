@@ -2,28 +2,40 @@
   import { onMount } from 'svelte';
   import { ListHeader } from '../components';
   import ProductList from './ProductList.svelte';
-  import { state, getProductsAction } from '../store';
 
-  const { products } = state;
+  const data = [
+    {
+      id: 10,
+      name: 'Strawberries',
+      description: '16oz package of fresh organic strawberries',
+      quantity: 1,
+    },
+    {
+      id: 20,
+      name: 'Sliced bread',
+      description: 'Loaf of fresh sliced wheat bread',
+      quantity: 1,
+    },
+    {
+      id: 30,
+      name: 'Apples',
+      description: 'Bag of 7 fresh McIntosh apples',
+      quantity: 1,
+    },
+  ];
 
-  let routePath = '/products';
-  let title = 'Products';
+  let products = [];
 
-  onMount(async () => await getProducts());
+  const getProducts = () => (products = [...data]);
 
-  async function getProducts() {
-    await getProductsAction();
-  }
+  onMount(getProducts);
 </script>
 
 <div class="content-container">
-  <ListHeader {title} {routePath} on:refresh={getProducts} />
+  <ListHeader title="Products" routePath="/products" on:refresh={getProducts} />
   <div class="columns is-multiline is-variable">
-    {#if products}
-      <div class="column is-8">
-        <ProductList products={$products} />
-      </div>
-    {/if}
+    <div class="column is-8">
+      <ProductList {products} />
+    </div>
   </div>
-
 </div>
