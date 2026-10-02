@@ -1,30 +1,43 @@
 <script>
-import { mapActions, mapGetters } from 'vuex';
 import ListHeader from '@/components/list-header.vue';
 import ProductList from './product-list.vue';
 
+const data = [
+  {
+    id: 10,
+    name: 'Strawberries',
+    description: '16oz package of fresh organic strawberries',
+    quantity: 1,
+  },
+  {
+    id: 20,
+    name: 'Sliced bread',
+    description: 'Loaf of fresh sliced wheat bread',
+    quantity: 1,
+  },
+  {
+    id: 30,
+    name: 'Apples',
+    description: 'Bag of 7 fresh McIntosh apples',
+    quantity: 1,
+  },
+];
+
 export default {
   name: 'Products',
-  data() {
-    return {
-      routePath: '/products',
-      title: 'Products',
-    };
-  },
   components: {
     ListHeader,
     ProductList,
   },
-  created() {
-    this.getProductsAction();
+  data() {
+    return { products: [] };
   },
-  computed: {
-    ...mapGetters('products', { products: 'products' }),
+  created() {
+    this.getProducts();
   },
   methods: {
-    ...mapActions('products', ['getProductsAction']),
     getProducts() {
-      this.getProductsAction();
+      this.products = [...data];
     },
   },
 };
@@ -33,13 +46,13 @@ export default {
 <template>
   <div class="content-container">
     <ListHeader
-      :title="title"
+      title="Products"
+      route-path="/products"
       @refresh="getProducts"
-      :routePath="routePath"
-    ></ListHeader>
+    />
     <div class="columns is-multiline is-variable">
-      <div class="column is-8" v-if="products">
-        <ProductList :products="products"></ProductList>
+      <div class="column is-8">
+        <ProductList :products="products" />
       </div>
     </div>
   </div>
