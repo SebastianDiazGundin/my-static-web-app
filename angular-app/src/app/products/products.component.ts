@@ -1,7 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from '../core';
-import { ProductService } from './product.service';
+
+const data: Product[] = [
+  {
+    id: 10,
+    name: 'Strawberries',
+    description: '16oz package of fresh organic strawberries',
+    quantity: 1,
+  },
+  {
+    id: 20,
+    name: 'Sliced bread',
+    description: 'Loaf of fresh sliced wheat bread',
+    quantity: 1,
+  },
+  {
+    id: 30,
+    name: 'Apples',
+    description: 'Bag of 7 fresh McIntosh apples',
+    quantity: 1,
+  },
+];
 
 @Component({
   selector: 'app-products',
@@ -12,7 +31,7 @@ import { ProductService } from './product.service';
         (refresh)="getProducts()"
       ></app-list-header>
       <div class="columns is-multiline is-variable">
-        <div class="column is-8" *ngIf="products$ | async as products">
+        <div class="column is-8">
           <app-product-list [products]="products"></app-product-list>
         </div>
       </div>
@@ -20,17 +39,13 @@ import { ProductService } from './product.service';
   `,
 })
 export class ProductsComponent implements OnInit {
-  products$: Observable<Product[]>;
-
-  constructor(private productService: ProductService) {
-    this.products$ = productService.entities$;
-  }
+  products: Product[] = [];
 
   ngOnInit() {
     this.getProducts();
   }
 
   getProducts() {
-    this.productService.getAll();
+    this.products = [...data];
   }
 }
